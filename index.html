@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Testing Mastery Program – Candidate Registration</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #181b22;
+    --border: #2a2f3a;
+    --accent: #4f8cff;
+    --accent-hover: #3d74e0;
+    --text: #e6e9ef;
+    --muted: #9aa3b2;
+    --section: #1f2530;
+    --error: #ff6b6b;
+    --success: #34d399;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 32px 16px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-size: 1.7rem;
+    margin: 0 0 6px;
+    letter-spacing: -0.5px;
+  }
+  .header p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+  form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  fieldset {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 8px;
+    padding: 22px 0 4px;
+  }
+  fieldset:first-of-type { border-top: none; padding-top: 0; }
+  legend {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 0;
+    margin-bottom: 14px;
+  }
+  .field { margin-bottom: 16px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .row .field { flex: 1; min-width: 200px; }
+  label.q {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .req { color: var(--accent); }
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color .15s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .options.inline { flex-direction: row; flex-wrap: wrap; gap: 14px; }
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    cursor: pointer;
+  }
+  .opt input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+  .other-input { margin-top: 8px; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .declaration {
+    background: var(--section);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  button {
+    width: 100%;
+    padding: 13px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+    margin-top: 8px;
+  }
+  button:hover { background: var(--accent-hover); }
+  button:disabled { opacity: .6; cursor: not-allowed; }
+  #result {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    min-height: 22px;
+  }
+  #result.ok { color: var(--success); }
+  #result.err { color: var(--error); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>AI Testing Mastery Program</h1>
+    <p>Registration Form</p>
+  </div>
+
+  <form id="regForm">
+    <!-- Replace with your Web3Forms access key -->
+    <input type="hidden" name="access_key" value="cdc4ac21-213d-49a8-8f49-6c3d31741e90">
+    <input type="hidden" name="subject" value="New Registration – AI Testing Mastery Program">
+    <input type="hidden" name="from_name" value="AI Testing Mastery Program">
+    <!-- Honeypot spam protection -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+    <!-- PERSONAL INFORMATION -->
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div class="row">
+        <div class="field">
+          <label class="q">First Name <span class="req">*</span></label>
+          <input type="text" name="First Name" required>
+        </div>
+        <div class="field">
+          <label class="q">Last Name <span class="req">*</span></label>
+          <input type="text" name="Last Name" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">Gender</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="Gender" value="Male"> Male</label>
+          <label class="opt"><input type="radio" name="Gender" value="Female"> Female</label>
+        </div>
+        <input class="other-input hidden" id="genderOther" type="text" name="Gender (Other)" placeholder="Please specify">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label class="q">Phone Number <span class="req">*</span></label>
+          <input type="tel" name="Phone Number" required>
+        </div>
+        <div class="field">
+          <label class="q">Email Address <span class="req">*</span></label>
+          <input type="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">City / Location <span class="req">*</span></label>
+        <input type="text" name="City / Location" required>
+      </div>
+    </fieldset>
+
+    <!-- PROFESSIONAL INFORMATION -->
+    <fieldset>
+      <legend>Professional Information</legend>
+      <div class="field">
+        <label class="q">Current Company Name</label>
+        <input type="text" name="Current Company Name">
+      </div>
+
+      <div class="field">
+        <label class="q">Current Role</label>
+        <div class="options">
+          <label class="opt"><input type="radio" name="Current Role" value="Business Analyst (BA)"> Business Analyst (BA)</label>
+          <label class="opt"><input type="radio" name="Current Role" value="Functional Tester"> Functional Tester</label>
+          <label class="opt"><input type="radio" name="Current Role" value="Automation Tester"> Automation Tester</label>
+          <label class="opt"><input type="radio" name="Current Role" value="Developer"> Developer</label>
+          <label class="opt"><input type="radio" name="Current Role" value="DevOps Engineer"> DevOps Engineer</label>
+          <label class="opt"><input type="radio" name="Current Role" value="Other" data-other="roleOther"> Other</label>
+        </div>
+        <input class="other-input hidden" id="roleOther" type="text" name="Current Role (Other)" placeholder="Please specify">
+      </div>
+
+      <div class="field">
+        <label class="q">Total Years of Experience</label>
+        <input type="number" name="Total Years of Experience" min="0" step="0.5">
+      </div>
+
+      <div class="field">
+        <label class="q">Domain Experience</label>
+        <div class="options inline">
+          <label class="opt"><input type="checkbox" name="Domain Experience" value="BFSI"> BFSI</label>
+          <label class="opt"><input type="checkbox" name="Domain Experience" value="Healthcare"> Healthcare</label>
+          <label class="opt"><input type="checkbox" name="Domain Experience" value="Supply Chain"> Supply Chain</label>
+          <label class="opt"><input type="checkbox" name="Domain Experience" value="Retail"> Retail</label>
+          <label class="opt"><input type="checkbox" name="Domain Experience" value="Telecom"> Telecom</label>
+          <label class="opt"><input type="checkbox" name="Domain Experience" value="Other" data-other="domainOther"> Other</label>
+        </div>
+        <input class="other-input hidden" id="domainOther" type="text" name="Domain Experience (Other)" placeholder="Please specify">
+      </div>
+    </fieldset>
+
+    <!-- EDUCATIONAL BACKGROUND -->
+    <fieldset>
+      <legend>Educational Background</legend>
+      <div class="field">
+        <label class="q">Highest Education Qualification</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="Highest Education" value="Diploma"> Diploma</label>
+          <label class="opt"><input type="radio" name="Highest Education" value="Bachelor's Degree"> Bachelor's Degree</label>
+          <label class="opt"><input type="radio" name="Highest Education" value="Master's Degree"> Master's Degree</label>
+          <label class="opt"><input type="radio" name="Highest Education" value="PhD"> PhD</label>
+          <label class="opt"><input type="radio" name="Highest Education" value="Other" data-other="eduOther"> Other</label>
+        </div>
+        <input class="other-input hidden" id="eduOther" type="text" name="Highest Education (Other)" placeholder="Please specify">
+      </div>
+
+      <div class="field">
+        <label class="q">Specialization / Stream</label>
+        <input type="text" name="Specialization / Stream">
+      </div>
+    </fieldset>
+
+    <!-- TECHNICAL SKILLS -->
+    <fieldset>
+      <legend>Technical Skills</legend>
+      <div class="field">
+        <label class="q">Do You Have Programming Knowledge?</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="Programming Knowledge" value="No"> No</label>
+          <label class="opt"><input type="radio" name="Programming Knowledge" value="Basic"> Basic</label>
+          <label class="opt"><input type="radio" name="Programming Knowledge" value="Intermediate"> Intermediate</label>
+          <label class="opt"><input type="radio" name="Programming Knowledge" value="Advanced"> Advanced</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">Programming Languages Known (if any)</label>
+        <input type="text" name="Programming Languages Known" placeholder="e.g. Python, Java, JavaScript">
+      </div>
+
+      <div class="field">
+        <label class="q">AI Knowledge Level</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="AI Knowledge Level" value="No Knowledge"> No Knowledge</label>
+          <label class="opt"><input type="radio" name="AI Knowledge Level" value="Very Minimal"> Very Minimal</label>
+          <label class="opt"><input type="radio" name="AI Knowledge Level" value="Intermediate"> Intermediate</label>
+          <label class="opt"><input type="radio" name="AI Knowledge Level" value="Advanced"> Advanced</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">Have You Worked on Any Test Automation Tools?</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="Worked on Automation Tools" value="Yes"> Yes</label>
+          <label class="opt"><input type="radio" name="Worked on Automation Tools" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">If Yes, Please Mention Tools</label>
+        <input type="text" name="Automation Tools Used" placeholder="e.g. Selenium, Playwright, Cypress">
+      </div>
+    </fieldset>
+
+    <!-- PROGRAM COMMITMENT -->
+    <fieldset>
+      <legend>Program Commitment</legend>
+      <div class="field">
+        <label class="q">Will You Be Able to Spend 10–15 Hours Per Week for Learning and Assignments?</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="Weekly Commitment" value="Yes"> Yes</label>
+          <label class="opt"><input type="radio" name="Weekly Commitment" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q">What Is Your Primary Goal for Joining This Program?</label>
+        <textarea name="Primary Goal"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q">How Did You Hear About This Program?</label>
+        <div class="options inline">
+          <label class="opt"><input type="radio" name="Source" value="LinkedIn"> LinkedIn</label>
+          <label class="opt"><input type="radio" name="Source" value="WhatsApp"> WhatsApp</label>
+          <label class="opt"><input type="radio" name="Source" value="Referral"> Referral</label>
+          <label class="opt"><input type="radio" name="Source" value="YouTube"> YouTube</label>
+          <label class="opt"><input type="radio" name="Source" value="Other" data-other="sourceOther"> Other</label>
+        </div>
+        <input class="other-input hidden" id="sourceOther" type="text" name="Source (Other)" placeholder="Please specify">
+      </div>
+    </fieldset>
+
+   
+
+    <button type="submit" id="submitBtn">Submit Registration</button>
+    <div id="result"></div>
+  </form>
+</div>
+
+<script>
+  // Toggle "Other" text inputs based on linked radio/checkbox selection
+  document.querySelectorAll('[data-other]').forEach((input) => {
+    const target = document.getElementById(input.dataset.other);
+    const groupName = input.name;
+
+    input.addEventListener('change', () => {
+      if (input.type === 'checkbox') {
+        target.classList.toggle('hidden', !input.checked);
+      }
+    });
+
+    // Radios: hide the "other" box when any other radio in the same group is picked
+    if (input.type === 'radio') {
+      document.querySelectorAll(`input[name="${CSS.escape(groupName)}"]`).forEach((r) => {
+        r.addEventListener('change', () => {
+          target.classList.toggle('hidden', !input.checked);
+        });
+      });
+    }
+  });
+
+  // Default the date field to today
+  document.querySelector('input[name="Date"]').valueAsDate = new Date();
+
+  // AJAX submission (no page reload)
+  const form = document.getElementById('regForm');
+  const result = document.getElementById('result');
+  const btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    result.className = '';
+    result.textContent = 'Submitting...';
+
+    // FormData keeps multiple checkbox values; join them for readability
+    const fd = new FormData(form);
+    const obj = {};
+    for (const [key, value] of fd.entries()) {
+      if (obj[key]) obj[key] = obj[key] + ', ' + value;
+      else obj[key] = value;
+    }
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(obj)
+      });
+      const data = await res.json();
+      if (data.success) {
+        result.className = 'ok';
+        result.textContent = 'Registration submitted successfully. Thank you!';
+        form.reset();
+        document.querySelector('input[name="Date"]').valueAsDate = new Date();
+        document.querySelectorAll('.other-input').forEach(el => el.classList.add('hidden'));
+      } else {
+        result.className = 'err';
+        result.textContent = data.message || 'Submission failed. Please try again.';
+      }
+    } catch (err) {
+      result.className = 'err';
+      result.textContent = 'Network error. Please check your connection and try again.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
