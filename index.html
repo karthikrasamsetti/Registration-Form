@@ -27,15 +27,8 @@
     padding: 32px 16px;
   }
   .wrap { max-width: 760px; margin: 0 auto; }
-  .header {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-  .header h1 {
-    font-size: 1.7rem;
-    margin: 0 0 6px;
-    letter-spacing: -0.5px;
-  }
+  .header { text-align: center; margin-bottom: 28px; }
+  .header h1 { font-size: 1.7rem; margin: 0 0 6px; letter-spacing: -0.5px; }
   .header p { color: var(--muted); margin: 0; font-size: 0.95rem; }
   form {
     background: var(--card);
@@ -60,20 +53,10 @@
   .field { margin-bottom: 16px; }
   .row { display: flex; gap: 14px; flex-wrap: wrap; }
   .row .field { flex: 1; min-width: 200px; }
-  label.q {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
+  label.q { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; }
   .req { color: var(--accent); }
-  input[type="text"],
-  input[type="tel"],
-  input[type="email"],
-  input[type="number"],
-  input[type="date"],
-  textarea,
-  select {
+  input[type="text"], input[type="tel"], input[type="email"],
+  input[type="number"], input[type="date"], textarea, select {
     width: 100%;
     padding: 10px 12px;
     background: var(--section);
@@ -84,32 +67,13 @@
     font-family: inherit;
     transition: border-color .15s;
   }
-  input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
   textarea { resize: vertical; min-height: 70px; }
   .options { display: flex; flex-direction: column; gap: 8px; }
   .options.inline { flex-direction: row; flex-wrap: wrap; gap: 14px; }
-  .opt {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.92rem;
-    cursor: pointer;
-  }
+  .opt { display: flex; align-items: center; gap: 8px; font-size: 0.92rem; cursor: pointer; }
   .opt input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
   .other-input { margin-top: 8px; }
-  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
-  .declaration {
-    background: var(--section);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-    font-size: 0.88rem;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
   button {
     width: 100%;
     padding: 13px;
@@ -125,12 +89,7 @@
   }
   button:hover { background: var(--accent-hover); }
   button:disabled { opacity: .6; cursor: not-allowed; }
-  #result {
-    text-align: center;
-    margin-top: 16px;
-    font-size: 0.95rem;
-    min-height: 22px;
-  }
+  #result { text-align: center; margin-top: 16px; font-size: 0.95rem; min-height: 22px; }
   #result.ok { color: var(--success); }
   #result.err { color: var(--error); }
   .hidden { display: none !important; }
@@ -148,7 +107,6 @@
     <input type="hidden" name="access_key" value="b236e59b-c690-469c-91ea-486bded3338f">
     <input type="hidden" name="subject" value="New Registration – AI Testing Mastery Program">
     <input type="hidden" name="from_name" value="AI Testing Mastery Program">
-    <!-- Honeypot spam protection -->
     <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
 
     <!-- PERSONAL INFORMATION -->
@@ -323,8 +281,6 @@
       </div>
     </fieldset>
 
-   
-
     <button type="submit" id="submitBtn">Submit Registration</button>
     <div id="result"></div>
   </form>
@@ -336,13 +292,12 @@
     const target = document.getElementById(input.dataset.other);
     const groupName = input.name;
 
-    input.addEventListener('change', () => {
-      if (input.type === 'checkbox') {
+    if (input.type === 'checkbox') {
+      input.addEventListener('change', () => {
         target.classList.toggle('hidden', !input.checked);
-      }
-    });
+      });
+    }
 
-    // Radios: hide the "other" box when any other radio in the same group is picked
     if (input.type === 'radio') {
       document.querySelectorAll(`input[name="${CSS.escape(groupName)}"]`).forEach((r) => {
         r.addEventListener('change', () => {
@@ -351,9 +306,6 @@
       });
     }
   });
-
-  // Default the date field to today
-  document.querySelector('input[name="Date"]').valueAsDate = new Date();
 
   // AJAX submission (no page reload)
   const form = document.getElementById('regForm');
@@ -366,12 +318,10 @@
     result.className = '';
     result.textContent = 'Submitting...';
 
-    // FormData keeps multiple checkbox values; join them for readability
     const fd = new FormData(form);
     const obj = {};
     for (const [key, value] of fd.entries()) {
-      if (obj[key]) obj[key] = obj[key] + ', ' + value;
-      else obj[key] = value;
+      obj[key] = obj[key] ? obj[key] + ', ' + value : value;
     }
 
     try {
@@ -385,7 +335,6 @@
         result.className = 'ok';
         result.textContent = 'Registration submitted successfully. Thank you!';
         form.reset();
-        document.querySelector('input[name="Date"]').valueAsDate = new Date();
         document.querySelectorAll('.other-input').forEach(el => el.classList.add('hidden'));
       } else {
         result.className = 'err';
